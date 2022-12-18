@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPT-3 Voice Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mt-5">GPT-3 Voice Interface</h1>
+      <form id="api-key-form" class="form-inline justify-content-center mt-5">
+        <label class="sr-only" for="api-key-input">Enter your GPT-3 API key:</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="api-key-input" placeholder="API key" required>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </form>
+      <div class="text-center mt-5">
+        <button id="start-speech-button" class="btn btn-primary" disabled>Start Speaking</button>
+      </div>
+      <div id="chat-thread" class="mt-5">
+        <!-- Chat messages will be added here -->
+      </div>
+    </div>
+
+    <script src="app.js" type="module"></script>
+
+    <!-- Load Bootstrap JavaScript -->
+    </body>
+</html
