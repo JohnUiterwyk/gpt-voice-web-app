@@ -17,8 +17,8 @@ export function setupSpeech() {
 
     const toggleMicOn = document.querySelector('#toggle-mic-on');
     toggleMicOn.addEventListener('click', (event) => {
-        setTimeout(() =>{readTextAloud('listening enabled')}, 500);
-        window.recognition.start();
+        readTextAloud('listening enabled')
+        setTimeout(() =>{window.recognition.start()}, 500);
 
 
     })
@@ -43,7 +43,9 @@ export function setupSpeech() {
 
     recognition.onerror = (event) => {
         console.error(event.error);
-        addMessageToChatThread('error',event.error)
+        if(event.error != 'aborted'){
+            addMessageToChatThread('error',event.error);
+        }
         throw event.error;
     };
 
@@ -140,9 +142,9 @@ function populateVoiceList() {
 // Function to read text aloud
 export function readTextAloud(text) {
 
+    window.speechSynthesis.cancel();
     console.log('Reading aloud.');
     const utterance = new SpeechSynthesisUtterance(text);
-
     // get voice
     if(window.voices)
     {
