@@ -47,6 +47,8 @@ export function setupSpeech() {
 
     recognition.onerror = (event) => {
         console.error(event.error);
+        addMessageToChatThread('error',event.error)
+        throw error;
     };
 
     recognition.onend = () => {
@@ -59,16 +61,30 @@ export function setupSpeech() {
     });
 }
 export function handleUserInput(input) {
-    addMessageToChatThread('user', input);
+    var apiKey;
+    // Check if an API key is stored in session storage
+    if (sessionStorage.getItem('apiKey')) {
+        // If an API key is stored, set the value of the input field to the stored API key
+        apiKey = sessionStorage.getItem('apiKey');
+    }else
+    {
+        addMessageToChatThread('error', 'No API Key provided');
+        return;
+    }
 
+    addMessageToChatThread('user', input);
     const modifiedPrompt = "user: " + input + "\nai:";
     window.chatHistory = window.chatHistory + "\n" + modifiedPrompt;
-    sendTextToGPT3(window.chatHistory).then((response) => {
+    sendTextToGPT3(apiKey, window.chatHistory).then((response) => {
         // Add the input and response to the chat thread
         addMessageToChatThread('ai', response);
         // Read the response aloud
         readTextAloud(response);
 
+    }).catch(
+        (error) => {
+            addMessageToChatThread('error',error.message)
+            throw error;
     });
 }
 window.handleUserInput = handleUserInput

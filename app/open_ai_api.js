@@ -24,17 +24,9 @@ export function setupApiKeyInputHandler() {
 
 
 // Function to send text to GPT-3 and get the response
-export async function sendTextToGPT3(inputPrompt) {
+export async function sendTextToGPT3(apiKey,inputPrompt) {
     
-    var apiKey;
-    // Check if an API key is stored in session storage
-    if (sessionStorage.getItem('apiKey')) {
-        // If an API key is stored, set the value of the input field to the stored API key
-        apiKey = sessionStorage.getItem('apiKey');
-    }else
-    {
-        window.alert('no api key defined')
-    }
+
 
     // Set the API endpoint and headers
     const endpoint = 'https://api.openai.com/v1/completions';
@@ -62,7 +54,7 @@ export async function sendTextToGPT3(inputPrompt) {
         body: body,
     });
     const data = await response.json();
-
+  
     // Return the response text
     return data.choices[0].text;
 }

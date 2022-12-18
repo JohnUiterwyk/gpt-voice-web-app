@@ -42,3 +42,9 @@
     background-color: rgb(36, 34, 80);
  
   }
+
+  .chat-message-error{
+    /* Add some padding and a background color to the text message */
+    background-color: rgb(80, 34, 34);
+ 
+  }
