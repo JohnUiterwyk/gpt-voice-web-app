@@ -44,7 +44,7 @@ export function setupSpeech() {
     recognition.onerror = (event) => {
         console.error(event.error);
         addMessageToChatThread('error',event.error)
-        throw error;
+        throw event.error;
     };
 
     recognition.onend = () => {
@@ -55,6 +55,7 @@ export function setupSpeech() {
     window.speechSynthesis.addEventListener("voiceschanged", () => {
         populateVoiceList();
     });
+
 
     window.handleUserInput = handleUserInput
 }
@@ -71,7 +72,11 @@ export function handleUserInput(input) {
         return;
     }
 
+
+    //display the user input
     addMessageToChatThread('user', input);
+
+    //prep the full prompt to GPT, retaining chat history to assist the prompt
     const modifiedPrompt = "user: " + input + "\nai:";
     window.chatHistory = window.chatHistory + "\n" + modifiedPrompt;
     sendTextToGPT3(apiKey, window.chatHistory).then((response) => {
@@ -80,9 +85,12 @@ export function handleUserInput(input) {
         // Read the response aloud
         readTextAloud(response);
 
+        //restart recognition
+
     }).catch(
         (error) => {
             addMessageToChatThread('error',error.message)
+             //restart recognition
             throw error;
     });
 }
@@ -131,6 +139,7 @@ function populateVoiceList() {
 
 // Function to read text aloud
 export function readTextAloud(text) {
+
     console.log('Reading aloud.');
     const utterance = new SpeechSynthesisUtterance(text);
 
