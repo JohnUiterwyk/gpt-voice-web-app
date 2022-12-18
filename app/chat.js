@@ -5,6 +5,6 @@ export function addMessageToChatThread(sender, message) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
     messageElement.classList.add(sender);
-    messageElement.textContent = message;
+    messageElement.textContent = sender+": "+message+" \n";
     chatThread.appendChild(messageElement);
 }

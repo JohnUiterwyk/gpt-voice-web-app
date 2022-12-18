@@ -24,7 +24,7 @@ export function setupApiKeyInputHandler() {
 
 
 // Function to send text to GPT-3 and get the response
-export async function sendTextToGPT3(input) {
+export async function sendTextToGPT3(inputPrompt) {
     
     var apiKey;
     // Check if an API key is stored in session storage
@@ -37,7 +37,7 @@ export async function sendTextToGPT3(input) {
     }
 
     // Set the API endpoint and headers
-    const endpoint = 'https://api.openai.com/v1/engines/davinci/completions';
+    const endpoint = 'https://api.openai.com/v1/completions';
     const headers = new Headers({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
@@ -45,9 +45,14 @@ export async function sendTextToGPT3(input) {
 
     // Set the request body
     const body = JSON.stringify({
-        prompt: input,
-        max_tokens: 256,
-        temperature: 0.5,
+        prompt: inputPrompt,
+        model:"text-davinci-003",
+        temperature:0.5,
+        max_tokens:200,
+        top_p:1.0,
+        frequency_penalty:0.5,
+        presence_penalty:0.0,
+        stop:["USER:"]
     });
 
     // Send the request and get the response
