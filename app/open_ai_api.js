@@ -25,8 +25,6 @@ export function setupApiKeyInputHandler() {
 
 // Function to send text to GPT-3 and get the response
 export async function sendTextToGPT3(apiKey,inputPrompt) {
-    
-
 
     // Set the API endpoint and headers
     const endpoint = 'https://api.openai.com/v1/completions';
