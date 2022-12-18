@@ -21,24 +21,30 @@
             <a class="navbar-brand" href="#">Voice AI</a>
             <div class="nav-group">
 
-            <button class="btn btn-outline-success" type="button" id="toggle-mic-on">
-                <i class="fa fa-microphone"></i>
-            </button>
-            <button class="btn btn-outline-success" type="button" id="toggle-mic-off">
-                <i class="fa fa-microphone-slash"></i>
-            </button>
             </div>
 
-            <div class="nav-group">
-                <select class="form-control" id="select-voice"></select>
-            </div>
             <form class="form-inline" id="api-key-form">
                 <div class="form-row">
                     <div class="col">
-                        <input  id="api-key-input"  class="form-control" type="search" placeholder="API Key" aria-label="API Key">
+                        <input id="api-key-input" class="form-control" type="search" placeholder="API Key"
+                            aria-label="API Key">
                     </div>
                     <div class="col">
                         <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> </button>
+                    </div>
+                    <div class="col">
+                        <select class="form-control" id="select-voice"></select>
+                    </div>
+                    <div class="col">
+                        
+                        <button class="btn btn-outline-success" type="button" id="toggle-mic-on">
+                            <i class="fa fa-microphone"></i>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-outline-success" type="button" id="toggle-mic-off">
+                            <i class="fa fa-microphone-slash"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -47,11 +53,11 @@
         </nav>
 
     </header>
-        <div id="chat-thread" class="chat-thread">
-            <div class="chat-message  chat-message-ai">
-               ai: Hi! I'm a voice driven version of GPT 3. How can I help you?</div>
-            <!-- Add more chat messages here -->
-        </div>
+    <div id="chat-thread" class="chat-thread">
+        <div class="chat-message  chat-message-ai">
+            ai: Hi! I'm a voice driven version of GPT 3. How can I help you?</div>
+        <!-- Add more chat messages here -->
+    </div>
     <script src="app.js" type="module"></script>
 </body>
 
