@@ -1,6 +1,6 @@
-
 import { addMessageToChatThread } from './chat.js';
 import { sendTextToGPT3 } from './open_ai_api.js';
+
 
 export function setupSpeech() {
     var SpeechRecognition = SpeechRecognition || window.webkitSpeechRecognition
@@ -14,10 +14,6 @@ export function setupSpeech() {
     recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
-
-   
-
-
 
     const toggleMicOn = document.querySelector('#toggle-mic-on');
     toggleMicOn.addEventListener('click', (event) => {
@@ -59,7 +55,10 @@ export function setupSpeech() {
     window.speechSynthesis.addEventListener("voiceschanged", () => {
         populateVoiceList();
     });
+
+    window.handleUserInput = handleUserInput
 }
+
 export function handleUserInput(input) {
     var apiKey;
     // Check if an API key is stored in session storage
@@ -87,7 +86,7 @@ export function handleUserInput(input) {
             throw error;
     });
 }
-window.handleUserInput = handleUserInput
+
 
 function populateVoiceList() {
     const synth = window.speechSynthesis;
@@ -128,6 +127,8 @@ function populateVoiceList() {
     voiceSelect.selectedIndex = selectedIndex;
     window.voices = voices;
 }
+
+
 // Function to read text aloud
 export function readTextAloud(text) {
     console.log('Reading aloud.');
