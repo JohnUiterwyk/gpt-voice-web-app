@@ -1,29 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>GPT-3 Voice Interface</title>
+
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Load Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="text-center mt-5">GPT-3 Voice Interface</h1>
-      <form id="api-key-form" class="form-inline justify-content-center mt-5">
-        <label class="sr-only" for="api-key-input">Enter your GPT-3 API key:</label>
-        <input type="text" class="form-control mb-2 mr-sm-2" id="api-key-input" placeholder="API key" required>
-        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-      </form>
-      <div class="text-center mt-5">
-        <button id="start-speech-button" class="btn btn-primary" disabled>Start Speaking</button>
-      </div>
-      <div id="chat-thread" class="mt-5">
-        <!-- Chat messages will be added here -->
-      </div>
-    </div>
+    <title>Voice Interface App</title>
+    <!-- Add a link to Bootstrap CSS here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Add a link to Font Awesome here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./app.css" />
+</head>
 
+<body class="dark-mode">
+    <header>
+        <nav class="navbar navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Voice AI</a>
+            <div class="nav-group">
+
+            <button class="btn btn-outline-success" type="button" id="toggle-mic-on">
+                <i class="fa fa-microphone"></i>
+            </button>
+            <button class="btn btn-outline-success" type="button" id="toggle-mic-off">
+                <i class="fa fa-microphone-slash"></i>
+            </button>
+            </div>
+            <form class="form-inline" id="api-key-form">
+                <div class="form-row">
+                    <div class="col">
+                        <input  id="api-key-input"  class="form-control" type="search" placeholder="API Key" aria-label="API Key">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> </button>
+                    </div>
+
+                </div>
+
+            </form>
+            </div>
+        </nav>
+
+    </header>
+        <div id="chat-thread" class="chat-thread">
+            <div class="chat-message chat-message-user">
+                Hi, how are you doing?
+            </div>
+            <div class="chat-message  chat-message-ai">
+                I'm doing well too, thanks. Just busy with work. I'm doing well too, thanks. Just busy with work. I'm
+                doing well too, thanks. Just busy with work. I'm doing well too, thanks. Just busy with work.
+            </div>
+            <!-- Add more chat messages here -->
+        </div>
     <script src="app.js" type="module"></script>
+</body>
 
-    <!-- Load Bootstrap JavaScript -->
-    </body>
-</html
+</html>

@@ -1,0 +1,44 @@
+.dark-mode {
+    /* Set the background color to a dark shade */
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .chat-thread {
+    /* Set the width and height of the chat thread */
+    width: 100%;
+    height: calc(100% - 56px); /* 56px is the height of the navbar */
+
+    position: relative;
+    top: 75px;
+    /* Add some padding and a scrollbar */
+    padding: 16px;
+    overflow-y: auto;
+  
+    /* Set the font size and font family */
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+  
+  .chat-message {
+    /* Add some margin to the chat messages */
+    display: flex;
+    padding: 8px 16px;
+    margin: 5px;
+    background-color: #333;
+    border-radius: 4px;
+
+  }
+  
+  
+  
+  .chat-message-user{
+    /* Add some padding and a background color to the text message */
+    background-color: rgb(44, 57, 84);
+  }
+
+  .chat-message-ai{
+    /* Add some padding and a background color to the text message */
+    background-color: rgb(36, 34, 80);
+ 
+  }
